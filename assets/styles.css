@@ -645,3 +645,13 @@ html.promo-ended .after-promo { display: inline; }
 .google-score b { font-size: 17px; font-weight: 800; color: var(--foreground); }
 .google-score:hover { color: var(--foreground); box-shadow: var(--shadow-lift); }
 .review p[dir="ltr"] { text-align: left; }
+
+/* ---------- Lessons per package ---------- */
+.plan .lessons {
+  margin-top: 14px;
+  display: flex; align-items: center; gap: 8px;
+  background: #eef4fd; border: 1px solid #c9dbf6;
+  border-radius: 12px; padding: 8px 12px;
+  font-size: 15px; font-weight: 700; color: var(--accent);
+}
+.plan .lessons .icon { width: 18px; height: 18px; }
