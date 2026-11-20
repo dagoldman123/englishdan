@@ -69,19 +69,23 @@
     } catch (e) {}
   }
 
-  // Rough location (city / country) for this visit; looked up once per visit.
+  // Rough location (city / country / map point) for this visit; looked up once per visit.
   function place(cb) {
-    try { var saved = sessionStorage.getItem('dg_geo'); if (saved) return cb(JSON.parse(saved)); } catch (e) {}
+    try { var saved = sessionStorage.getItem('dg_geo2'); if (saved) return cb(JSON.parse(saved)); } catch (e) {}
     var done = false;
     function finish(g, save) {
       if (done) return; done = true;
-      if (save) { try { sessionStorage.setItem('dg_geo', JSON.stringify(g)); } catch (e) {} }
+      if (save) { try { sessionStorage.setItem('dg_geo2', JSON.stringify(g)); } catch (e) {} }
       cb(g);
     }
     setTimeout(function () { finish({}, false); }, 2500);
     fetch('https://get.geojs.io/v1/ip/geo.json')
       .then(function (r) { return r.json(); })
-      .then(function (j) { finish({ city: j.city || '', country: j.country || '' }, true); })
+      .then(function (j) {
+        function r2(v) { var n = parseFloat(v); return isFinite(n) ? Math.round(n * 100) / 100 : ''; }
+        finish({ city: j.city || '', country: j.country || '', cc: j.country_code || '',
+                 lat: r2(j.latitude), lon: r2(j.longitude) }, true);
+      })
       .catch(function () { finish({}, false); });
   }
 
@@ -95,7 +99,8 @@
 
   place(function (g) {
     send({ t: 'view', vid: vid, sid: sid, pv: pv, page: page, src: source(), city: g.city || '',
-           country: g.country || '', tz: tz, dev: dev, ret: returning, lang: navigator.language || '' });
+           country: g.country || '', cc: g.cc || '', lat: g.lat === undefined ? '' : g.lat,
+           lon: g.lon === undefined ? '' : g.lon, tz: tz, dev: dev, ret: returning, lang: navigator.language || '' });
   });
 
   document.addEventListener('visibilitychange', function () {
