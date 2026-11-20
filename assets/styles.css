@@ -413,6 +413,28 @@ html.js .reviews.show-all .review.extra { display: flex; }
 .app-mock .ready b { display: block; font-size: 14px; }
 .app-mock .ready span { font-size: 12px; color: var(--muted-foreground); }
 
+/* ---------- Podcast ---------- */
+
+.podcast { padding: 112px 0; }
+.podcast-grid { display: grid; gap: 48px; align-items: center; }
+.podcast .tag {
+  background: #e8f8ee; color: #137a3a;
+  padding: 6px 14px; font-size: 13px; font-weight: 700;
+  margin-bottom: 20px;
+}
+.podcast .tag .icon { width: 15px; height: 15px; }
+.podcast-text .lead { margin-top: 18px; font-size: 17px; line-height: 1.7; color: var(--muted-foreground); }
+.btn-spotify {
+  margin-top: 32px;
+  background: #1db954; color: #0b0b0b;
+  padding: 15px 28px; font-size: 16px;
+  box-shadow: 0 8px 20px -8px rgba(29, 185, 84, .6);
+}
+.btn-spotify .icon { width: 18px; height: 18px; }
+.podcast-player { padding: 14px; box-shadow: var(--shadow-lift); border-radius: 24px; }
+.podcast-player iframe { display: block; width: 100%; height: 352px; border: 0; border-radius: 14px; }
+.podcast-note { margin-top: 12px; text-align: center; font-size: 13px; color: var(--muted-foreground); }
+
 /* ---------- Voice feedback ---------- */
 
 .voice { padding: 112px 0; background: var(--gradient-hero); text-align: center; }
@@ -579,6 +601,7 @@ html.js .reviews.show-all .review.extra { display: flex; }
   .about-grid { grid-template-columns: 1.1fr 1fr; gap: 56px; }
   .why-grid { grid-template-columns: 1fr 1fr; }
   .app-grid { grid-template-columns: 1.15fr 1fr; }
+  .podcast-grid { grid-template-columns: 1fr 1.1fr; gap: 56px; }
   .plans { grid-template-columns: 1fr 1fr; }
   .section-title, .about h2, .big-title, .contact h2 { font-size: 44px; }
 }
@@ -603,7 +626,8 @@ html.js .reviews.show-all .review.extra { display: flex; }
   .section-title, .about h2, .big-title, .contact h2 { font-size: 32px; }
   .specializations { padding-top: 64px; }
   .about, .testimonials, .why, .contact { padding-block: 72px; }
-  .custom-app, .voice, .pricing { padding-block: 80px; }
+  .custom-app, .voice, .pricing, .podcast { padding-block: 80px; }
+  .btn-spotify { width: 100%; }
   .why-card p { padding-inline-start: 0; }
   .promo-strip .card { justify-content: center; text-align: center; }
   .creds { grid-template-columns: 1fr 1fr; }
