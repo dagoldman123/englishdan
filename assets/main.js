@@ -21,7 +21,7 @@
 })();
 
 // Review ticker — a slim bar fixed to the bottom of the screen that shows the
-// reviews from the "testimonials" section one at a time. It reads them straight
+// reviews from the "testimonials" section one at a time, in random order. It reads them straight
 // from the page, so adding a review to that section adds it here too.
 // Every review is shown in full: short ones sit still, long ones scroll up one
 // line at a time at reading pace, and the next review only comes once the last
@@ -53,6 +53,16 @@
     });
   });
   if (!reviews.length) return;
+
+  // Random order: shuffle the reviews, show each once, then reshuffle.
+  // The first review of a new round is never the one that was just shown.
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+  }
+  shuffle(reviews);
 
   function el(tag, cls) { var e = document.createElement(tag); if (cls) e.className = cls; return e; }
 
@@ -145,7 +155,16 @@
   }
 
   function nextReview() {
-    index = (index + 1) % reviews.length;
+    index++;
+    if (index >= reviews.length) {
+      var last = reviews[reviews.length - 1];
+      shuffle(reviews);
+      if (reviews.length > 1 && reviews[0] === last) {
+        var k = 1 + Math.floor(Math.random() * (reviews.length - 1));
+        reviews[0] = reviews[k]; reviews[k] = last;
+      }
+      index = 0;
+    }
     if (reduceMotion) { fill(index); schedule(); return; }
     slide.classList.add('leaving');
     setTimeout(function () {
