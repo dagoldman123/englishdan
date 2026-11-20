@@ -428,15 +428,6 @@ html.js .reviews.show-all .review.extra { display: flex; }
 /* ---------- Pricing ---------- */
 
 .pricing { padding: 112px 0; background: rgba(241, 244, 247, .6); }
-.promo-banner {
-  max-width: 560px; margin: 0 auto 48px;
-  background: #e3ecfa; border: 1px solid #a9c5ef;
-  border-radius: 16px; padding: 16px 24px; text-align: center;
-}
-.promo-banner b.title { display: block; font-size: 16px; margin-bottom: 6px; }
-.promo-banner p { font-size: 13.5px; color: var(--muted-foreground); }
-.promo-banner .hl { color: var(--accent); }
-
 .plans { display: grid; gap: 24px; align-items: stretch; }
 .plan {
   position: relative;
@@ -508,11 +499,6 @@ html.js .reviews.show-all .review.extra { display: flex; }
   margin-top: 20px; padding: 16px 20px; text-align: center;
   font-size: 13.5px; color: var(--muted-foreground);
 }
-
-/* Promo switch-off after the end date (set by a tiny script in <head>) */
-.after-promo { display: none; }
-html.promo-ended .promo-only { display: none !important; }
-html.promo-ended .after-promo { display: inline; }
 
 /* ---------- Contact ---------- */
 
@@ -655,3 +641,48 @@ html.promo-ended .after-promo { display: inline; }
   font-size: 15px; font-weight: 700; color: var(--accent);
 }
 .plan .lessons .icon { width: 18px; height: 18px; }
+
+/* ---------- Group lessons package ---------- */
+.plan-group { margin-top: 32px; padding: 32px 24px 24px; border: 2px solid var(--highlight); }
+.plan-group .ribbon { background: var(--highlight); box-shadow: 0 6px 14px -8px rgba(232, 127, 37, .7); }
+.group-grid { display: grid; gap: 28px; }
+.group-main, .group-side { display: flex; flex-direction: column; }
+.group-note {
+  margin-top: 16px;
+  display: flex; align-items: flex-start; gap: 10px;
+  background: #fdf3ea; border: 1px solid #f5cfa9;
+  border-radius: 14px; padding: 12px 14px;
+  font-size: 14px; line-height: 1.6;
+}
+.group-note .icon { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; color: var(--highlight); }
+.group-options-title { font-size: 16px; font-weight: 800; margin-bottom: 14px; }
+.group-options { display: grid; gap: 12px; margin: 0 0 20px; padding: 0; list-style: none; }
+.group-options li {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--background); border: 1px solid var(--border);
+  border-radius: 14px; padding: 14px 16px;
+}
+.group-options .num {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 999px;
+  display: grid; place-items: center;
+  background: var(--accent); color: #fff; font-size: 14px; font-weight: 800;
+}
+.group-options b { display: block; font-size: 15px; margin-bottom: 2px; }
+.group-options p { font-size: 14px; line-height: 1.6; color: var(--muted-foreground); }
+.plan-group .choose { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* New item in "included in every package" */
+.included-new { grid-column: 1 / -1; background: #eef4fd; border-color: #c9dbf6; }
+.included-new .new-badge {
+  display: inline-block; vertical-align: 2px; margin-inline-end: 4px;
+  background: var(--accent); color: #fff;
+  font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 10px;
+}
+.included-new a { color: var(--accent); white-space: nowrap; }
+.included-new a:hover { text-decoration: underline; }
+
+@media (min-width: 768px) {
+  .plan-group { padding: 36px 32px 28px; }
+  .group-grid { grid-template-columns: 1fr 1.15fr; gap: 40px; }
+  .group-side { border-inline-start: 1px solid var(--border); padding-inline-start: 40px; }
+}
