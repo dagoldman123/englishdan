@@ -870,3 +870,42 @@ html.has-ticker .wa-float { bottom: calc(var(--ticker-h, 84px) + 16px); }
 @media (prefers-reduced-motion: reduce) {
   .rt-slide, .rt-slide.leaving, .rt-slide.entering, .rt-text { transition: none; transform: none; }
 }
+
+/* ---------- Student dashboard preview ---------- */
+.dash-note { margin-top: 20px; font-size: 15px; font-weight: 600; }
+.dash-cta { margin-top: 22px; display: inline-flex; }
+.dash-shots { width: min(380px, 100%); margin-inline: auto; display: grid; gap: 14px; }
+.dash-screen {
+  margin: 0; background: #fff; color: #192029;
+  border: 1px solid var(--border); border-radius: 22px;
+  box-shadow: var(--shadow-lift); padding: 18px 20px;
+  font-family: Heebo, ui-sans-serif, system-ui, sans-serif;
+}
+.dash-main { border-radius: 28px; padding: 22px 22px 20px; background: #eaf3fd; }
+.dash-label {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #5b6573;
+}
+.dash-hello { margin-top: 6px; font-size: 22px; font-weight: 800; letter-spacing: -.5px; }
+.dash-gauge { display: block; width: 100%; max-width: 230px; margin: 12px auto 0; }
+.dash-big { text-align: center; font-size: 14px; color: #3d4654; margin-top: 2px; }
+.dash-big b { font-size: 26px; font-weight: 800; color: #131b26; margin-inline-end: 4px; }
+.dash-next {
+  margin-top: 14px; display: flex; justify-content: space-between; align-items: center;
+  background: #131b26; color: #fff; border-radius: 14px; padding: 11px 14px; font-size: 13px;
+}
+.dash-next b { font-size: 14px; }
+.dash-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.dash-mini { padding: 14px 15px; }
+.dash-mini p { margin: 8px 0 0; font-size: 13px; line-height: 1.45; color: #3d4654; }
+.dash-stickers { margin-top: 8px; font-size: 18px; letter-spacing: 2px; }
+.dash-stickers span { font-size: 12px; color: #5b6573; letter-spacing: 0; }
+.dash-learn {
+  display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700;
+  background: var(--student); color: #fff; border-radius: 99px; padding: 5px 11px;
+}
+.dash-caption { text-align: center; font-size: 12px; opacity: .75; margin: 0; }
+@media (min-width: 960px) {
+  .dash-main { transform: rotate(-1.5deg); }
+  .dash-row .dash-mini:first-child { transform: rotate(1deg); }
+}
